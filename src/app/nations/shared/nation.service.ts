@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import * as io from 'socket.io-client';
 
 import { Nation } from './nation.model';
-import { socketConfig } from '../../shared/config';
+import { socketConfig } from '../../config';
 
 @Injectable()
 export class NationService {

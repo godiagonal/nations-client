@@ -1,4 +1,4 @@
-import { Location } from './location.model';
+import { Location } from '../nations/shared/location.model';
 
 export const mapConfig = {
   defaultLocation: new Location(59.855, 17.634),

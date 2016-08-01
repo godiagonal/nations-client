@@ -1,7 +1,5 @@
-import {
-  Location,
-  mapConfig
-} from './';
+import { Location } from './';
+import { mapConfig } from '../../config';
 
 export class Nation {
   id: number;

@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { GOOGLE_MAPS_DIRECTIVES, GOOGLE_MAPS_PROVIDERS } from 'angular2-google-maps/core';
 
-import { NationService, Nation, Location, mapConfig } from '../shared';
+import { NationService, Nation, Location } from '../shared';
+import { mapConfig } from '../../config';
 
 @Component({
   moduleId: module.id,
