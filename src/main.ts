@@ -1,14 +1,16 @@
 import { bootstrap } from '@angular/platform-browser-dynamic';
 import { enableProdMode } from '@angular/core';
 
-import { AppComponent } from './app';
+import { AppComponent, appRouterProviders } from './app';
 import { environment } from './app/config';
-import { NationService } from './app/nations/shared/nation.service';
+import { NationService, LocationService } from './app/services';
 
 if (environment.production) {
   enableProdMode();
 }
 
 bootstrap(AppComponent, [
-  NationService
+  NationService,
+  LocationService,
+  appRouterProviders
 ]);

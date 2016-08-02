@@ -1,0 +1,23 @@
+<sebm-google-map class="sebm-google-map-container"
+                 [latitude]="currentLocation.latitude"
+                 [longitude]="currentLocation.longitude">
+  <styled-map></styled-map>
+  <sebm-google-map-marker
+    *ngFor="let nation of nations"
+    (markerClick)="clickedMarker(nation)"
+    [latitude]="nation.location.latitude"
+    [longitude]="nation.location.longitude"
+    [title]="nation.name"
+    [iconUrl]="nation.markerIcon">
+    <sebm-google-map-info-window
+      [isOpen]="selectedNation && nation.id === selectedNation.id">
+      {{nation.name}}
+    </sebm-google-map-info-window>
+  </sebm-google-map-marker>
+  <sebm-google-map-marker
+    *ngIf="currentLocation"
+    [latitude]="currentLocation.latitude"
+    [longitude]="currentLocation.longitude"
+    [iconUrl]="userMarkerIcon">
+  </sebm-google-map-marker>
+</sebm-google-map>

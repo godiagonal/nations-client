@@ -40,13 +40,19 @@ const barrels: string[] = [
   // App specific barrels.
   'app',
   'app/config',
-  'app/shared',
-  'app/nations',
-  'app/nations/shared',
-  'app/nations/nation-list',
-  'app/nations/nation-map',
-  'app/nations/nation-details',
-  'app/pub-crawls',
+  'app/directives',
+  'app/services',
+  'app/models',
+  'app/extensions',
+  'app/components',
+  'app/components/shared',
+  'app/components/nations',
+  'app/components/nations/nation-list',
+  'app/components/nations/nation-map',
+  'app/components/nations/nation-details',
+  'app/components/nations/nation-overview',
+  'app/components/pub-crawls',
+  'app/components/page-not-found',
   /** @cli-barrel */
 ];
 

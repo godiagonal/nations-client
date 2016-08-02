@@ -1,22 +1,18 @@
-import { Location } from '../nations/shared/location.model';
-
 export const mapConfig = {
-  defaultLocation: new Location(59.855, 17.634),
-  locationTimeout: 5000,
-  zoom: 15,
+  apiKey: 'AIzaSyDtnt1nFvcUT7JaOn5HzNuaR5xUT4ewkBk',
   icons: [
     {
       threshold: 0.9,
-      iconUrl: 'http://i.stack.imgur.com/JWM0W.png'
+      iconUrl: 'img/marker-red.png'
     },
     {
       threshold: 0.7,
-      iconUrl: 'http://i.stack.imgur.com/JWM0W.png'
+      iconUrl: 'img/marker-orange.png'
     },
     {
       threshold: 0,
-      iconUrl: 'http://i.stack.imgur.com/JWM0W.png'
+      iconUrl: 'img/marker-green.png'
     }
   ],
-  userIconUrl: 'http://i.stack.imgur.com/JWM0W.png'
+  userIconUrl: 'img/marker-blue.png'
 };

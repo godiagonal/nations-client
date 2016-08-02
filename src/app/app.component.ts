@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 
-import {
-  NationListComponent,
-  NationMapComponent
-} from './nations/';
+import { NationListComponent, NationMapComponent } from './components';
 
 @Component({
   moduleId: module.id,
@@ -12,7 +10,8 @@ import {
   styleUrls: ['app.component.css'],
   directives: [
     NationListComponent,
-    NationMapComponent
+    NationMapComponent,
+    ROUTER_DIRECTIVES
   ]
 })
 export class AppComponent implements OnInit {
