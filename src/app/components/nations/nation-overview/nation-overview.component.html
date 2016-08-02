@@ -1,3 +1,3 @@
-<nation-map></nation-map>
+<nation-map (select)="select($event)"></nation-map>
 <nation-details *ngIf="selectedNation" [nation]="selectedNation"></nation-details>
 <button (click)="checkNation()">Check nation</button>

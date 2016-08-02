@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { NationMapComponent, NationDetailsComponent } from '../'
 import { NationService } from '../../../services';
@@ -23,6 +23,7 @@ export class NationOverviewComponent implements OnInit, OnDestroy {
   selectedSlug: string;
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private nationService: NationService) { }
 
@@ -62,4 +63,8 @@ export class NationOverviewComponent implements OnInit, OnDestroy {
     console.log(this.selectedNation);
   }
 
+  select(nation: Nation) {
+    // This will trigger selectedNation to update everywhere in the app
+    this.router.navigate(['/map', nation.slug]);
+  }
 }

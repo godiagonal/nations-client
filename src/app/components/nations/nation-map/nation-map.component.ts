@@ -1,5 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 
 import {
   provideLazyMapsAPILoaderConfig,
@@ -27,6 +26,7 @@ import { StyledMapDirective } from '../../../directives';
   ]
 })
 export class NationMapComponent implements OnInit, OnDestroy {
+  @Output() select = new EventEmitter();
   selectedNation: Nation;
   nations: Nation[];
   subSelectedNation: any;
@@ -35,7 +35,6 @@ export class NationMapComponent implements OnInit, OnDestroy {
   userMarkerIcon: string = mapConfig.userIconUrl;
 
   constructor(
-    private router: Router,
     private nationService: NationService,
     private locationService: LocationService) { }
 
@@ -55,10 +54,10 @@ export class NationMapComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subSelectedNation.unsubscribe();
+    this.subNations.unsubscribe();
   }
 
   clickedMarker(nation: Nation) {
-    // This will trigger selectedNation to update everywhere in the app
-    this.router.navigate(['/map', nation.slug]);
+    this.select.emit(nation);
   }
 }
