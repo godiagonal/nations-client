@@ -6,3 +6,4 @@ export * from './models';
 export * from './services';
 export * from './app.component';
 export * from './app.routes';
+export * from './environment';
