@@ -25,7 +25,7 @@
   "defaults": {
     "prefix": "app",
     "sourceDir": "src",
-    "styleExt": "sass",
+    "styleExt": "stylus",
     "prefixInterfaces": false,
     "lazyRoutePrefix": "+"
   }

@@ -1,10 +1,6 @@
 import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 
-import {
-  provideLazyMapsAPILoaderConfig,
-  GOOGLE_MAPS_DIRECTIVES,
-  GOOGLE_MAPS_PROVIDERS
-} from 'angular2-google-maps/core';
+import { GOOGLE_MAPS_DIRECTIVES } from 'angular2-google-maps/core';
 
 import { NationService, LocationService } from '../../../services';
 import { Nation, Location } from '../../../models';
@@ -19,10 +15,6 @@ import { StyledMapDirective } from '../../../directives';
   directives: [
     GOOGLE_MAPS_DIRECTIVES,
     StyledMapDirective
-  ],
-  providers: [
-    GOOGLE_MAPS_PROVIDERS,
-    provideLazyMapsAPILoaderConfig({ apiKey: mapConfig.apiKey })
   ]
 })
 export class NationMapComponent implements OnInit, OnDestroy {

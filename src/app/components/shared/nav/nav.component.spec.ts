@@ -3,11 +3,11 @@
 import { By }           from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { addProviders, async, inject } from '@angular/core/testing';
-import { NationMapComponent } from './nation-map.component';
+import { NavComponent } from './nav.component';
 
-describe('Component: NationMap', () => {
+describe('Component: Nav', () => {
   it('should create an instance', () => {
-    let component = new NationMapComponent(null, null);
+    let component = new NavComponent();
     expect(component).toBeTruthy();
   });
 });

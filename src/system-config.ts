@@ -10,13 +10,17 @@
 /** Map relative paths to URLs. */
 const map: any = {
   'socket.io-client': 'vendor/socket.io-client/socket.io.js',
-  'angular2-google-maps': 'vendor/angular2-google-maps'
+  'angular2-google-maps': 'vendor/angular2-google-maps',
+  'angular2-onsenui': 'vendor/angular2-onsenui',
+  'onsenui': 'vendor/onsenui',
 };
 
 /** User packages configuration. */
 const packages: any = {
   'socket.io-client': { defaultExtension: 'js' },
-  'angular2-google-maps/core': { defaultExtension: 'js', main: 'index.js' }
+  'angular2-google-maps/core': { defaultExtension: 'js', main: 'index.js' },
+  'angular2-onsenui': { defaultExtension: 'js', main: 'dist/src/angular2-onsenui.js' },
+  'onsenui': { defaultExtension: 'js', main: 'js/onsenui.js' },
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -45,7 +49,6 @@ const barrels: string[] = [
   'app/models',
   'app/extensions',
   'app/components',
-  'app/components/shared',
   'app/components/nations',
   'app/components/nations/nation-list',
   'app/components/nations/nation-map',
@@ -53,6 +56,8 @@ const barrels: string[] = [
   'app/components/nations/nation-overview',
   'app/components/pub-crawls',
   'app/components/page-not-found',
+  'app/components/shared',
+  'app/components/shared/nav',
   /** @cli-barrel */
 ];
 

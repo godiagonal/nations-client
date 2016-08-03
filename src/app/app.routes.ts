@@ -1,16 +1,15 @@
 import { provideRouter, RouterConfig } from '@angular/router';
 
 import {
+  PageNotFoundComponent,
   NationOverviewComponent,
   NationListComponent
-} from './components/nations';
-
-import { PageNotFoundComponent } from './components/page-not-found';
+} from './components';
 
 const routes: RouterConfig = [
   {
     path: '',
-    redirectTo: 'map/0',
+    redirectTo: 'list',
     pathMatch: 'full'
   },
   {

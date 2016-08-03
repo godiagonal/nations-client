@@ -7,7 +7,7 @@ import { NationOverviewComponent } from './nation-overview.component';
 
 describe('Component: NationOverview', () => {
   it('should create an instance', () => {
-    let component = new NationOverviewComponent(null, null);
+    let component = new NationOverviewComponent(null, null, null);
     expect(component).toBeTruthy();
   });
 });

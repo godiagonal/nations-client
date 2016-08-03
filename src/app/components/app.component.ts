@@ -1,21 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 
-import { NationListComponent, NationMapComponent } from './components';
+window['ons'] = System.import('onsenui');
+import { ONS_DIRECTIVES } from 'angular2-onsenui';
+
+import { NationListComponent, NationMapComponent } from './nations';
+import { NavComponent } from './shared';
 
 @Component({
   moduleId: module.id,
   selector: 'app-root',
   templateUrl: 'app.component.html',
-  styleUrls: ['app.component.css'],
+  styleUrls: [
+    '../../style/app-theme.css',
+    'app.component.css'
+  ],
   directives: [
     NationListComponent,
     NationMapComponent,
-    ROUTER_DIRECTIVES
+    NavComponent,
+    ROUTER_DIRECTIVES,
+    ONS_DIRECTIVES
   ]
 })
 export class AppComponent implements OnInit {
-  title = 'Nationsapp!';
+  title = 'Nations';
 
   constructor() { }
 
