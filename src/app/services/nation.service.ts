@@ -13,9 +13,14 @@ export class NationService {
   selectedNationSub = new BehaviorSubject(null);
 
   private socket: any;
+  private tempSelectedNation: Nation;
 
   set selectedNation(nation: Nation) {
-    this.selectedNationSub.next(nation);
+    if (this.nations.length) {
+      this.selectedNationSub.next(nation);
+    } else {
+      this.tempSelectedNation = nation;
+    }
   }
 
   constructor() {
@@ -23,12 +28,11 @@ export class NationService {
     this.addListeners();
   }
 
-  getNationFromSlug(slug: string) {
-    return this.nations.find(nation => nation.slug === slug);
-  }
-
-  setNationFromSlug(slug: string) {
-    this.selectedNationSub.next(this.nations.find(nation => nation.slug === slug));
+  private setNationWhenLoaded() {
+    if (this.tempSelectedNation) {
+      this.selectedNationSub.next(this.tempSelectedNation);
+      this.tempSelectedNation = null;
+    }
   }
 
   addListeners() {
@@ -42,6 +46,9 @@ export class NationService {
         this.nations.push(Nation.fromObject(nation));
       });
       this.nationsSub.next(this.nations);
+
+      // Select a nation if one was selected earlier (before the nation list was loaded)
+      this.setNationWhenLoaded();
     });
 
     this.socket.on('addNation', res => {
