@@ -1,0 +1,20 @@
+<ons-navigator>
+  <ons-page>
+    <ons-toolbar>
+      <div class="left">
+        <ons-toolbar-button>
+          <ons-icon icon="ion-navicon" size="28px"></ons-icon>
+        </ons-toolbar-button>
+      </div>
+      <div class="center">{{title}}</div>
+      <div class="right"></div>
+    </ons-toolbar>
+    <div class="page__backgroud"></div>
+    <div class="page__content">
+      <br><br><br><br>
+      <ons-button (click)="goto(1)">page 1</ons-button>
+      <ons-button (click)="goto(2)">page 2</ons-button>
+    </div>
+  </ons-page>
+</ons-navigator>
+

@@ -57,7 +57,10 @@ const barrels: string[] = [
   'app/components/pub-crawls',
   'app/components/page-not-found',
   'app/components/shared',
-  'app/components/shared/nav',
+  'app/components/test',
+  'app/components/test/test-child',
+  'app/components/test/test-parent',
+  'app/components/shared/ons-back-button-custom',
   /** @cli-barrel */
 ];
 

@@ -1,34 +1,29 @@
-import { Component, OnInit } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ROUTER_DIRECTIVES, Router } from '@angular/router';
 
 window['ons'] = System.import('onsenui');
-import { ONS_DIRECTIVES } from 'angular2-onsenui';
 
-import { NationListComponent, NationMapComponent } from './nations';
-import { NavComponent } from './shared';
+import { NationsComponent } from './nations';
 
 @Component({
   moduleId: module.id,
   selector: 'app-root',
   templateUrl: 'app.component.html',
-  styleUrls: [
-    '../../style/app-theme.css',
-    'app.component.css'
-  ],
+  styleUrls: ['app.component.css'],
   directives: [
-    NationListComponent,
-    NationMapComponent,
-    NavComponent,
-    ROUTER_DIRECTIVES,
-    ONS_DIRECTIVES
+    NationsComponent,
+    ROUTER_DIRECTIVES
   ]
 })
 export class AppComponent implements OnInit {
-  title = 'Nations';
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
 
+  }
+
+  navigate(route: any[]) {
+    this.router.navigate(route);
   }
 }

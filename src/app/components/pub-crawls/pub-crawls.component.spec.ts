@@ -3,11 +3,11 @@
 import { By }           from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { addProviders, async, inject } from '@angular/core/testing';
-import { NavComponent } from './nav.component';
+import { PubCrawlsComponent } from './pub-crawls.component';
 
-describe('Component: Nav', () => {
+describe('Component: PubCrawls', () => {
   it('should create an instance', () => {
-    let component = new NavComponent();
+    let component = new PubCrawlsComponent();
     expect(component).toBeTruthy();
   });
 });

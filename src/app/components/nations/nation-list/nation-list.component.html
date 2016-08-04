@@ -1,5 +1,8 @@
 <ul>
-  <li *ngFor="let nation of nations">
+  <li *ngFor="let nation of nations" (click)="clickedNation(nation)">
     {{nation.id}} - {{nation.name}} - {{nation.currentVisitors}} / {{nation.maxVisitors}}
+    <br>
+    {{nation.location.distanceTo(currentLocation)}} m away
   </li>
 </ul>
+

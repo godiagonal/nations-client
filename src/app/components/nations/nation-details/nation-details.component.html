@@ -1,5 +1,5 @@
-<div *ngIf="nation">
-  <h2>{{nation.name}}</h2>
+<div *ngIf="nation" class="nation-details">
+  <div>{{nation.name}}</div>
   <div>{{nation.location.distanceTo(currentLocation)}} m away</div>
   <div>{{nation.currentVisitors}} out of {{nation.maxVisitors}} people</div>
 </div>

@@ -1,1 +1,1 @@
-export * from './nav';
+export * from './ons-back-button-custom';

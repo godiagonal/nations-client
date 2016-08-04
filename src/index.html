@@ -5,8 +5,9 @@
   <title>Nations</title>
   <base href="/">
 
-  <!-- Has to be linked from here to avoid breaking relative paths -->
+  <!-- Has to be linked from here to avoid breaking relative paths and allow use in all components -->
   <link rel="stylesheet" href="vendor/onsenui/css/onsenui.css">
+  <link rel="stylesheet" href="style/app-theme.css">
 
   {{#unless environment.production}}
   <script src="/ember-cli-live-reload.js" type="text/javascript"></script>

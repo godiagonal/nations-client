@@ -2,23 +2,23 @@ import { provideRouter, RouterConfig } from '@angular/router';
 
 import {
   PageNotFoundComponent,
-  NationOverviewComponent,
-  NationListComponent
+  NationsComponent,
+  PubCrawlsComponent
 } from './components';
 
 const routes: RouterConfig = [
   {
     path: '',
-    redirectTo: 'list',
+    redirectTo: 'nations',
     pathMatch: 'full'
   },
   {
-    path: 'map/:slug',
-    component: NationOverviewComponent
+    path: 'nations',
+    component: NationsComponent
   },
   {
-    path: 'list',
-    component: NationListComponent
+    path: 'pub-crawls',
+    component: PubCrawlsComponent
   },
   {
     path: '**',

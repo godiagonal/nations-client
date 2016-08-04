@@ -22,10 +22,10 @@ module.exports = function (config) {
       { pattern: 'dist/vendor/reflect-metadata/Reflect.js', included: true, watched: false },
       { pattern: 'dist/vendor/systemjs/dist/system-polyfills.js', included: true, watched: false },
       { pattern: 'dist/vendor/systemjs/dist/system.src.js', included: true, watched: false },
-      { pattern: 'dist/vendor/zone.js/dist/async-test.js', included: true, watched: false },
-      { pattern: 'dist/vendor/zone.js/dist/fake-async-test.js', included: true, watched: false },
+      { pattern: 'dist/vendor/zone.js/dist/async-test-child.js', included: true, watched: false },
+      { pattern: 'dist/vendor/zone.js/dist/fake-async-test-child.js', included: true, watched: false },
 
-      { pattern: 'config/karma-test-shim.js', included: true, watched: true },
+      { pattern: 'config/karma-test-child-shim.js', included: true, watched: true },
 
       // Distribution folder.
       { pattern: 'dist/**/*', included: false, watched: true }
