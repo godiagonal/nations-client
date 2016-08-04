@@ -29,6 +29,7 @@ module.exports = function (defaults) {
     ]
   });
 
+  // todo: angular cli generatus .stylus files, it should be .styl (see angular-cli.json)
   // Compile onsenui theme separately to allow for use of @import
   var stylusTree = compileStylus(['src/style'], 'app-theme.styl', 'style/app-theme.css', {});
 
