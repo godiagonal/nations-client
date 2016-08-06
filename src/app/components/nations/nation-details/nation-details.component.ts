@@ -11,6 +11,7 @@ import { LocationService } from '../../../services';
 })
 export class NationDetailsComponent implements OnInit {
   @Input() nation: Nation;
+  @Input() border: boolean = true;
   currentLocation: Location;
 
   constructor(private locationService: LocationService) { }

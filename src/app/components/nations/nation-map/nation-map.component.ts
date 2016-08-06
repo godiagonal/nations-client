@@ -4,7 +4,7 @@ import { GOOGLE_MAPS_DIRECTIVES } from 'angular2-google-maps/core';
 
 import { NationService, LocationService } from '../../../services';
 import { Nation, Location } from '../../../models';
-import { mapConfig } from '../../../config';
+import { googleConfig } from '../../../config';
 import { StyledMapDirective } from '../../../directives';
 
 @Component({
@@ -24,7 +24,7 @@ export class NationMapComponent implements OnInit, OnDestroy {
   subSelectedNation: any;
   subNations: any;
   currentLocation: Location;
-  userMarkerIcon: string = mapConfig.userIconUrl;
+  userMarkerIcon: string = googleConfig.userIconUrl;
 
   constructor(
     private nationService: NationService,
@@ -49,7 +49,11 @@ export class NationMapComponent implements OnInit, OnDestroy {
     this.subNations.unsubscribe();
   }
 
-  clickedMarker(nation: Nation) {
+  clickMarker(nation: Nation) {
     this.select.emit(nation);
+  }
+
+  closeInfoWindow(nation: Nation) {
+    console.log(nation);
   }
 }

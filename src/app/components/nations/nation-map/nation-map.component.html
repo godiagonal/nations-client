@@ -4,13 +4,14 @@
   <styled-map></styled-map>
   <sebm-google-map-marker
     *ngFor="let nation of nations"
-    (markerClick)="clickedMarker(nation)"
+    (markerClick)="clickMarker(nation)"
     [latitude]="nation.location.latitude"
     [longitude]="nation.location.longitude"
     [title]="nation.name"
     [iconUrl]="nation.markerIcon">
     <sebm-google-map-info-window
-      [isOpen]="selectedNation && nation.id === selectedNation.id">
+      [isOpen]="selectedNation && nation.id === selectedNation.id"
+      (infoWindowClose)="closeInfoWindow(nation)">
       {{nation.name}}
     </sebm-google-map-info-window>
   </sebm-google-map-marker>

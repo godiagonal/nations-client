@@ -3,16 +3,17 @@ import { enableProdMode } from '@angular/core';
 
 import {
   provideLazyMapsAPILoaderConfig,
-  GOOGLE_MAPS_PROVIDERS
+  GOOGLE_MAPS_PROVIDERS,
 } from 'angular2-google-maps/core';
 
 import {
   AppComponent,
   NationService,
   LocationService,
+  GoogleService,
   appRouterProviders,
   environment,
-  mapConfig
+  googleConfig
 } from './app';
 
 if (environment.production) {
@@ -22,7 +23,8 @@ if (environment.production) {
 bootstrap(AppComponent, [
   NationService,
   LocationService,
+  GoogleService,
   appRouterProviders,
   GOOGLE_MAPS_PROVIDERS,
-  provideLazyMapsAPILoaderConfig({ apiKey: mapConfig.apiKey })
+  provideLazyMapsAPILoaderConfig(googleConfig.apiConfig)
 ]);

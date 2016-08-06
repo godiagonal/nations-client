@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { ONS_DIRECTIVES, OnsNavigator } from 'angular2-onsenui';
 
-import { NationListComponent, NationOverviewComponent } from './';
+import { NationListComponent, NationMapPageComponent } from './';
 import { Nation } from '../../models';
 
 @Component({
@@ -24,6 +24,6 @@ export class NationsComponent implements OnInit {
   ngOnInit() { }
 
   openMap(nation: Nation) {
-    this.navigator.pushComponent(NationOverviewComponent, { animation: 'slide' }, { nation: nation });
+    this.navigator.pushComponent(NationMapPageComponent, { animation: 'slide' }, { nation: nation });
   }
 }

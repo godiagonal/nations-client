@@ -1,14 +1,19 @@
+$theme-color = #009eb7
+$nation-status-full-color = #f46b7b
+$nation-status-almost-full-color = #fa8e50
+$nation-status-ok-color = #00c99f
+
 $background-color = #f9f9f9
 $material-background-color = #ffffff
-$text-color = #1f1f21
-$sub-text-color = #999
+$text-color = #3d3e40
+$sub-text-color = #707477
 $highlight-color = rgba(24,103,194,0.81)
 $second-highlight-color = #25a6d9
-$border-color = #ccc
-$toolbar-background-color = #fff
-$toolbar-button-color = rgba(38,100,171,0.81)
-$toolbar-text-color = #1f1f21
-$toolbar-border-color = #bbb
+$border-color = #dddddd
+$toolbar-background-color = $theme-color
+$toolbar-button-color = #fff
+$toolbar-text-color = #fff
+$toolbar-border-color = $theme-color
 $buttonbar-color = rgba(18,114,224,0.77)
 $buttonbar-active-text-color = #fff
 $list-background-color = #fff
@@ -67,3 +72,39 @@ $fab-text-color = #ffffff
 $fab-background-color = #009688
 
 @import 'components'
+
+// Global
+
+ul
+  margin 0px
+  padding 0px
+  list-style none
+
+// Onsen UI
+
+.back-button
+  padding-left 0px
+
+.page
+  font-size 14px
+
+.page__content.no-status-bar-fill
+  top 0px !important
+
+.navigation-bar--transparent
+  text-shadow 0px 0px 3px rgba(50, 50, 50, 1)
+
+// Custom
+
+.nation-status-full
+  border-left-color $nation-status-full-color !important
+
+.nation-status-almost-full
+  border-left-color $nation-status-almost-full-color !important
+
+.nation-status-ok
+  border-left-color $nation-status-ok-color !important
+
+.sub-text
+  color $sub-text-color
+

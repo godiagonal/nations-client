@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { ONS_DIRECTIVES, OnsNavigator, PageParams } from 'angular2-onsenui';
 
-import { NationMapComponent, NationDetailsComponent } from '../'
+import { NationMapComponent, NationDetailsComponent, NationDetailsPageComponent } from '../'
 import { OnsBackButtonCustomComponent } from '../../shared'
 import { NationService } from '../../../services';
 import { Nation } from '../../../models';
@@ -10,8 +10,8 @@ import { Nation } from '../../../models';
 @Component({
   moduleId: module.id,
   selector: 'ons-page',
-  templateUrl: 'nation-overview.component.html',
-  styleUrls: ['nation-overview.component.css'],
+  templateUrl: 'nation-map-page.component.html',
+  styleUrls: ['nation-map-page.component.css'],
   directives: [
     NationMapComponent,
     NationDetailsComponent,
@@ -19,7 +19,7 @@ import { Nation } from '../../../models';
     ONS_DIRECTIVES
   ]
 })
-export class NationOverviewComponent implements OnInit, OnDestroy {
+export class NationMapPageComponent implements OnInit, OnDestroy {
   subSelectedNation: any;
   selectedNation: Nation;
 
@@ -37,7 +37,6 @@ export class NationOverviewComponent implements OnInit, OnDestroy {
     // Subscribe to global variable selectedNation
     this.subSelectedNation = this.nationService.selectedNationSub.subscribe((nation: Nation) => {
       this.selectedNation = nation;
-      //console.log('overview selectedNation sub');
     });
   }
 
@@ -47,5 +46,9 @@ export class NationOverviewComponent implements OnInit, OnDestroy {
 
   select(nation: Nation) {
     this.nationService.selectedNation = nation;
+  }
+
+  openDetails(nation: Nation) {
+    this.navigator.pushComponent(NationDetailsPageComponent, { animation: 'slide' }, { nation: nation });
   }
 }

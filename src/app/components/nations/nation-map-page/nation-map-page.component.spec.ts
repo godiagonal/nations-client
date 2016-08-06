@@ -3,11 +3,11 @@
 import { By }           from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { addProviders, async, inject } from '@angular/core/testing';
-import { TestParentComponent } from './test-parent.component';
+import { NationMapPageComponent } from './nation-map-page.component';
 
-describe('Component: TestParent', () => {
+describe('Component: NationOverview', () => {
   it('should create an instance', () => {
-    let component = new TestParentComponent(null);
+    let component = new NationMapPageComponent(null, null, null);
     expect(component).toBeTruthy();
   });
 });

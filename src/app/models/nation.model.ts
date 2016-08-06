@@ -1,5 +1,9 @@
+import { BehaviorSubject } from 'rxjs/Rx';
+
+import { GoogleService } from '../services';
+import { nationConfig } from '../config';
 import { Location } from './location.model';
-import { mapConfig } from '../config';
+import { Place } from './place.model';
 
 export class Nation {
   id: number;
@@ -9,6 +13,8 @@ export class Nation {
   location: Location;
   image: string;
   slug: string;
+  googlePlaceId: string;
+  cachedPlace: Place;
 
   get visitorQuota() {
     if (this.maxVisitors === 0) { return 0; }
@@ -16,10 +22,19 @@ export class Nation {
   }
 
   get markerIcon() {
-    for (let i = 0; i < mapConfig.icons.length; i++) {
-      if (this.visitorQuota >= mapConfig.icons[i].threshold) { return mapConfig.icons[i].iconUrl; }
+    for (let i = 0; i < nationConfig.visitorStatuses.length; i++) {
+      let visitorStatus = nationConfig.visitorStatuses[i];
+      if (this.visitorQuota >= visitorStatus.threshold) { return visitorStatus.iconUrl; }
     }
-    return mapConfig.icons[mapConfig.icons.length - 1].iconUrl;
+    return nationConfig.visitorStatuses[nationConfig.visitorStatuses.length - 1].iconUrl;
+  }
+
+  get statusClass() {
+    for (let i = 0; i < nationConfig.visitorStatuses.length; i++) {
+      let visitorStatus = nationConfig.visitorStatuses[i];
+      if (this.visitorQuota >= visitorStatus.threshold) { return visitorStatus.cssClass; }
+    }
+    return nationConfig.visitorStatuses[nationConfig.visitorStatuses.length - 1].cssClass;
   }
 
   constructor(
@@ -29,7 +44,8 @@ export class Nation {
     maxVisitors: number = 0,
     location: Location = new Location(),
     image: string = '',
-    slug: string = '') {
+    slug: string = '',
+    googlePlaceId: string = '') {
     this.id = id;
     this.name = name;
     this.currentVisitors = currentVisitors;
@@ -37,6 +53,7 @@ export class Nation {
     this.location = location;
     this.image = image;
     this.slug = slug;
+    this.googlePlaceId = googlePlaceId;
   }
 
   static fromObject(obj) {
@@ -50,6 +67,7 @@ export class Nation {
       obj.maxVisitors,
       Location.fromObject(obj.location),
       obj.image,
-      obj.slug);
+      obj.slug,
+      obj.googlePlaceId);
   }
 }

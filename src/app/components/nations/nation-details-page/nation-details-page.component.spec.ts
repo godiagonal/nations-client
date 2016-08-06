@@ -3,11 +3,11 @@
 import { By }           from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { addProviders, async, inject } from '@angular/core/testing';
-import { NationOverviewComponent } from './nation-overview.component';
+import { NationDetailsPageComponent } from './nation-details-page.component';
 
-describe('Component: NationOverview', () => {
+describe('Component: NationDetailsPage', () => {
   it('should create an instance', () => {
-    let component = new NationOverviewComponent(null, null, null);
+    let component = new NationDetailsPageComponent(null, null, null, null);
     expect(component).toBeTruthy();
   });
 });

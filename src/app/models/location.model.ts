@@ -10,7 +10,15 @@ export class Location {
   }
 
   distanceTo(location: Location) {
-    return MathExtensions.calcDistance(this, location);
+    let distance = MathExtensions.calcDistance(this, location);
+    let unit = 'm';
+
+    if (distance > 1000) {
+      distance = Math.round(distance / 1000);
+      unit = 'km';
+    }
+
+    return { distance: distance, unit: unit };
   }
 
   static fromObject(obj) {

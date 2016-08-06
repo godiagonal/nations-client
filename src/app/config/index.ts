@@ -1,3 +1,5 @@
 export * from './socket.config';
-export * from './map.config';
+export * from './google.config';
 export * from './location.config';
+export * from './nation.config';
+

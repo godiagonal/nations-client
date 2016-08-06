@@ -1,0 +1,43 @@
+<ons-toolbar class="navigation-bar--transparent">
+  <div class="left">
+    <ons-toolbar-button>
+      <ons-back-button-custom (click)="navigator.popComponent()">
+        Map
+      </ons-back-button-custom>
+    </ons-toolbar-button>
+  </div>
+  <div class="center">
+    Details
+  </div>
+</ons-toolbar>
+<div class="page__background"></div>
+<div class="page__content no-status-bar-fill">
+
+  <div *ngIf="selectedNation">
+
+    <div *ngIf="selectedNationPlace">
+      <ons-carousel class="nation-photos"
+                    #photoCarousel swipeable overscrollable auto-refresh auto-scroll
+                    auto-scroll-ratio="0.4" animation-options="{duration: 0.1}">
+        <ons-carousel-item class="nation-photo"
+                           *ngFor="let photo of selectedNationPlace.photos"
+                           [ngStyle]="{'background-image': 'url(' + photo +')'}">
+        </ons-carousel-item>
+        <ons-carousel-item class="nation-photo"
+                           *ngIf="!selectedNationPlace.photos.length"
+                           [ngStyle]="{'background-image': 'url(' + photoPlaceholder +')'}">
+          <div class="nation-photo-placeholder">No photos found</div>
+        </ons-carousel-item>
+      </ons-carousel>
+    </div>
+
+    <nation-details class="nation-details-container"
+                    [nation]="selectedNation"
+                    [border]="false">
+    </nation-details>
+
+    <!-- todo: contact info -->
+
+  </div>
+
+</div>

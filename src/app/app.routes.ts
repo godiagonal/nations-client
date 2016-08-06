@@ -3,7 +3,8 @@ import { provideRouter, RouterConfig } from '@angular/router';
 import {
   PageNotFoundComponent,
   NationsComponent,
-  PubCrawlsComponent
+  PubCrawlsComponent,
+  TestParentComponent
 } from './components';
 
 const routes: RouterConfig = [
@@ -19,6 +20,10 @@ const routes: RouterConfig = [
   {
     path: 'pub-crawls',
     component: PubCrawlsComponent
+  },
+  {
+    path: 'test',
+    component: TestParentComponent
   },
   {
     path: '**',

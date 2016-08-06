@@ -1,0 +1,23 @@
+<ons-toolbar>
+  <div class="left">
+    <ons-toolbar-button>
+      <ons-back-button-custom (click)="navigator.popComponent()">
+        Nations
+      </ons-back-button-custom>
+    </ons-toolbar-button>
+  </div>
+  <div class="center">
+    Map
+  </div>
+</ons-toolbar>
+<div class="page__background"></div>
+<div class="page__content">
+  <nation-map (select)="select($event)"></nation-map>
+  <nation-details class="nation-details-container"
+                  [ngClass]="{active: selectedNation}"
+                  [nation]="selectedNation"
+                  (click)="openDetails(selectedNation)">
+  </nation-details>
+</div>
+
+

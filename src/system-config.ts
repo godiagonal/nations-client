@@ -53,7 +53,7 @@ const barrels: string[] = [
   'app/components/nations/nation-list',
   'app/components/nations/nation-map',
   'app/components/nations/nation-details',
-  'app/components/nations/nation-overview',
+  'app/components/nations/nation-map-page',
   'app/components/pub-crawls',
   'app/components/page-not-found',
   'app/components/shared',
@@ -61,6 +61,7 @@ const barrels: string[] = [
   'app/components/test/test-child',
   'app/components/test/test-parent',
   'app/components/shared/ons-back-button-custom',
+  'app/components/nations/nation-details-page',
   /** @cli-barrel */
 ];
 

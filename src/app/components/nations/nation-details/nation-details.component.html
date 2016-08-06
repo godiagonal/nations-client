@@ -1,5 +1,23 @@
-<div *ngIf="nation" class="nation-details">
-  <div>{{nation.name}}</div>
-  <div>{{nation.location.distanceTo(currentLocation)}} m away</div>
-  <div>{{nation.currentVisitors}} out of {{nation.maxVisitors}} people</div>
+<div *ngIf="nation"class="nation-details {{nation.statusClass}}"
+     [ngClass]="{border: border}">
+  <ons-row>
+    <ons-col>
+      <div class="nation-name">
+        {{nation.name}}
+      </div>
+      <div class="nation-distance sub-text">
+        <strong>
+          {{nation.location.distanceTo(currentLocation).distance}}
+          {{nation.location.distanceTo(currentLocation).unit}}
+        </strong>
+        from your location
+      </div>
+      <div class="nation-visitors sub-text">
+        Currently {{nation.currentVisitors}} out of {{nation.maxVisitors}} visitors
+      </div>
+    </ons-col>
+    <ons-col width="65px">
+      <div class="nation-image" [ngStyle]="{'background-image': 'url(' + nation.image +')'}"></div>
+    </ons-col>
+  </ons-row>
 </div>

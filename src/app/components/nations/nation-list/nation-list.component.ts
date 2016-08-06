@@ -2,12 +2,14 @@ import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/cor
 
 import { Nation, Location } from '../../../models';
 import { NationService, LocationService } from '../../../services';
+import { NationDetailsComponent} from '../nation-details';
 
 @Component({
   moduleId: module.id,
   selector: 'nation-list',
   templateUrl: 'nation-list.component.html',
-  styleUrls: ['nation-list.component.css']
+  styleUrls: ['nation-list.component.css'],
+  directives: [NationDetailsComponent]
 })
 export class NationListComponent implements OnInit, OnDestroy {
   @Output() select = new EventEmitter();

@@ -1,36 +1,33 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router, ROUTER_DIRECTIVES } from '@angular/router';
 
 window['ons'] = System.import('onsenui');
 import { ONS_DIRECTIVES, OnsNavigator } from 'angular2-onsenui';
 
 import { TestChildComponent } from '../';
+import { GoogleService } from '../../../services';
 
 @Component({
   moduleId: module.id,
   selector: 'test-parent',
   templateUrl: 'test-parent.component.html',
-  styleUrls: ['test-child-parent.component.css'],
+  styleUrls: ['test-parent.component.css'],
   directives: [
-    ONS_DIRECTIVES,
-    ROUTER_DIRECTIVES
+    ONS_DIRECTIVES
+  ],
+  providers: [
+    GoogleService
   ]
 })
 export class TestParentComponent implements OnInit {
   @ViewChild(OnsNavigator) private _navigator: OnsNavigator;
-  subParams: any;
-  title = 'Nations Test Page';
 
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute) { }
+  constructor(private placesService: GoogleService) { }
 
   ngOnInit() {
-
+    this.placesService.getPlaceDetails('ChIJ8eAWwPbLX0YRom1gca2Xcrs');
   }
 
   goto(id: number) {
     this._navigator.pushComponent(TestChildComponent, { animation: 'slide' }, { key: 'value' });
   }
-
 }

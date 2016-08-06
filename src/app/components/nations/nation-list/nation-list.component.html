@@ -1,8 +1,6 @@
-<ul>
+<!-- todo: order by -->
+<ul class="nation-list">
   <li *ngFor="let nation of nations" (click)="clickedNation(nation)">
-    {{nation.id}} - {{nation.name}} - {{nation.currentVisitors}} / {{nation.maxVisitors}}
-    <br>
-    {{nation.location.distanceTo(currentLocation)}} m away
+    <nation-details [nation]="nation"></nation-details>
   </li>
 </ul>
-
