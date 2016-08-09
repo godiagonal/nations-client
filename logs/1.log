@@ -1,0 +1,21 @@
+todo: fix this bug. occurs sometimes when using the back button from details view.
+
+Angular 2 is running in the development mode. Call enableProdMode() to enable the production mode.
+Nations loaded.
+Nation loaded.
+EXCEPTION: Error: Uncaught (in promise): TypeError: page._getToolbarElement is not a function
+EXCEPTION: Error: Uncaught (in promise): TypeError: page._getToolbarElement is not a function
+STACKTRACE:
+Error: Uncaught (in promise): TypeError: page._getToolbarElement is not a function
+    at resolvePromise (zone.js:538)
+    at new ZoneAwarePromise (zone.js:587)
+    at OnsNavigator.popComponent (ons-navigator.ts:205)
+    at DebugAppView._View_NationDetailsPageComponent0._handle_click_6_0 (NationDetailsPageComponent.template.js:129)
+    at eval (view.ts:406)
+    at eval (dom_renderer.ts:274)
+    at eval (dom_events.ts:20)
+    at ZoneDelegate.invoke (zone.js:323)
+    at Object.onInvoke (ng_zone_impl.ts:72)
+    at ZoneDelegate.invoke (zone.js:322)
+Unhandled Promise rejection: page._getToolbarElement is not a function ; Zone: angular ; Task: HTMLElement.addEventListener:click ; Value: TypeError: page._getToolbarElement is not a function(…)
+Error: Uncaught (in promise): TypeError: page._getToolbarElement is not a function(…)
