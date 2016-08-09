@@ -24,7 +24,7 @@ export class TestParentComponent implements OnInit {
   constructor(private placesService: GoogleService) { }
 
   ngOnInit() {
-    this.placesService.getPlaceDetails('ChIJ8eAWwPbLX0YRom1gca2Xcrs');
+
   }
 
   goto(id: number) {
