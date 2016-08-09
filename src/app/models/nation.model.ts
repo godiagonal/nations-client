@@ -1,20 +1,21 @@
-import { BehaviorSubject } from 'rxjs/Rx';
-
-import { GoogleService } from '../services';
 import { nationConfig } from '../config';
 import { Location } from './location.model';
-import { Place } from './place.model';
+import { Event } from './event.model';
 
 export class Nation {
   id: number;
   name: string;
   currentVisitors: number;
   maxVisitors: number;
+  logo: string;
+  address: string;
+  phone: string;
+  website: string;
+  photos: string[];
   location: Location;
-  image: string;
-  slug: string;
-  googlePlaceId: string;
-  cachedPlace: Place;
+  todaysOpenHours: string;
+  todaysEvent: string;
+  events: Event[];
 
   get visitorQuota() {
     if (this.maxVisitors === 0) { return 0; }
@@ -42,18 +43,28 @@ export class Nation {
     name: string = '',
     currentVisitors: number = 0,
     maxVisitors: number = 0,
-    location: Location = new Location(),
-    image: string = '',
-    slug: string = '',
-    googlePlaceId: string = '') {
+    logo: string = '',
+    todaysOpenHours: string = '',
+    todaysEvent: string = '',
+    address: string = '',
+    phone: string = '',
+    website: string = '',
+    photos: string[] = [],
+    location: Location = new Location,
+    events: Event[] = []) {
     this.id = id;
     this.name = name;
     this.currentVisitors = currentVisitors;
     this.maxVisitors = maxVisitors;
+    this.logo = logo;
+    this.todaysOpenHours = todaysOpenHours;
+    this.todaysEvent = todaysEvent;
+    this.address = address;
+    this.phone = phone;
+    this.website = website;
+    this.photos = photos;
     this.location = location;
-    this.image = image;
-    this.slug = slug;
-    this.googlePlaceId = googlePlaceId;
+    this.events = events;
   }
 
   static fromObject(obj) {
@@ -61,13 +72,18 @@ export class Nation {
       return new Nation();
 
     return new Nation(
-      obj.id,
+      obj._id,
       obj.name,
       obj.currentVisitors,
       obj.maxVisitors,
-      Location.fromObject(obj.location),
-      obj.image,
-      obj.slug,
-      obj.googlePlaceId);
+      obj.logo,
+      obj.todaysOpenHours,
+      obj.todaysEvent,
+      obj.place ? obj.place.address : '',
+      obj.place ? obj.place.phone : '',
+      obj.place ? obj.place.website : '',
+      obj.place ? obj.place.photos : [],
+      obj.place ? Location.fromObject(obj.place.location) : new Location(),
+      obj.events ? obj.events.map(ev => Event.fromObject(ev)) : []);
   }
 }

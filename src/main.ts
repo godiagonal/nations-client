@@ -1,5 +1,6 @@
 import { bootstrap } from '@angular/platform-browser-dynamic';
 import { enableProdMode } from '@angular/core';
+import { HTTP_PROVIDERS } from '@angular/http';
 
 import {
   provideLazyMapsAPILoaderConfig,
@@ -10,7 +11,6 @@ import {
   AppComponent,
   NationService,
   LocationService,
-  GoogleService,
   appRouterProviders,
   environment,
   googleConfig
@@ -23,8 +23,8 @@ if (environment.production) {
 bootstrap(AppComponent, [
   NationService,
   LocationService,
-  GoogleService,
   appRouterProviders,
+  HTTP_PROVIDERS,
   GOOGLE_MAPS_PROVIDERS,
   provideLazyMapsAPILoaderConfig(googleConfig.apiConfig)
 ]);

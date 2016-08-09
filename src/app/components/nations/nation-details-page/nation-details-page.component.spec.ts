@@ -7,7 +7,7 @@ import { NationDetailsPageComponent } from './nation-details-page.component';
 
 describe('Component: NationDetailsPage', () => {
   it('should create an instance', () => {
-    let component = new NationDetailsPageComponent(null, null, null, null);
+    let component = new NationDetailsPageComponent(null, null, null);
     expect(component).toBeTruthy();
   });
 });

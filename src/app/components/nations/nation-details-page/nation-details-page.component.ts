@@ -1,11 +1,11 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 
 import { ONS_DIRECTIVES, OnsNavigator, PageParams } from 'angular2-onsenui';
 
 import { NationDetailsComponent } from '../';
 import { OnsBackButtonCustomComponent } from '../../shared';
-import { NationService, GoogleService } from '../../../services';
-import { Nation, Place } from '../../../models';
+import { NationService } from '../../../services';
+import { Nation } from '../../../models';
 import { nationConfig } from '../../../config';
 
 @Component({
@@ -22,32 +22,30 @@ import { nationConfig } from '../../../config';
 export class NationDetailsPageComponent implements OnInit, OnDestroy {
   subSelectedNation: any;
   selectedNation: Nation;
-  selectedNationPlace: Place;
   photoPlaceholder: string = nationConfig.photoPlaceholder;
 
   constructor(
     private nationService: NationService,
     private navigator: OnsNavigator,
-    private params: PageParams,
-    private googleService: GoogleService) { }
+    private params: PageParams) { }
 
   ngOnInit() {
     let nationParam = this.params.data['nation'];
     if (nationParam instanceof Nation) {
-      this.nationService.selectedNation = nationParam;
+      // Refresh the selected nation from API, this will update the
+      // data for this nation app-wide (where there's a subscription)
+      this.nationService.loadNation(nationParam.id)
+        .then((nation) => {
+          console.log('Nation loaded.');
+          this.nationService.selectedNation = nation;
+        }, err => {
+          console.error(err);
+        });
     }
 
     // Subscribe to global variable selectedNation
     this.subSelectedNation = this.nationService.selectedNationSub.subscribe((nation: Nation) => {
       this.selectedNation = nation;
-
-      // Get place details for the nation
-      this.googleService.getPlace(nation)
-        .then(place => {
-          this.selectedNationPlace = place;
-        }, err => {
-          console.error(err);
-        });
     });
   }
 

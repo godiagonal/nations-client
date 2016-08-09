@@ -4,7 +4,8 @@ window['ons'] = System.import('onsenui');
 import { ONS_DIRECTIVES, OnsNavigator } from 'angular2-onsenui';
 
 import { TestChildComponent } from '../';
-import { GoogleService } from '../../../services';
+import { NationService } from '../../../services';
+import { Nation } from '../../../models';
 
 @Component({
   moduleId: module.id,
@@ -13,21 +14,20 @@ import { GoogleService } from '../../../services';
   styleUrls: ['test-parent.component.css'],
   directives: [
     ONS_DIRECTIVES
-  ],
-  providers: [
-    GoogleService
   ]
 })
 export class TestParentComponent implements OnInit {
-  @ViewChild(OnsNavigator) private _navigator: OnsNavigator;
+  title = 'Test';
+  nations: Nation[];
+  subNations: any;
 
-  constructor(private placesService: GoogleService) { }
+  constructor(private nationService: NationService) { }
 
   ngOnInit() {
-
-  }
-
-  goto(id: number) {
-    this._navigator.pushComponent(TestChildComponent, { animation: 'slide' }, { key: 'value' });
+    // Subscribe to global variable nations
+    this.subNations = this.nationService.nationsSub.subscribe((nations: Nation[]) => {
+      this.nations = nations;
+      console.log(nations);
+    });
   }
 }

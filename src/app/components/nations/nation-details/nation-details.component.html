@@ -1,4 +1,4 @@
-<div *ngIf="nation"class="nation-details {{nation.statusClass}}"
+<div *ngIf="nation"class="nation-details {{border ? nation.statusClass : ''}}"
      [ngClass]="{border: border}">
   <ons-row>
     <ons-col>
@@ -17,7 +17,7 @@
       </div>
     </ons-col>
     <ons-col width="65px">
-      <div class="nation-image" [ngStyle]="{'background-image': 'url(' + nation.image +')'}"></div>
+      <div class="nation-image" [ngStyle]="{'background-image': 'url(' + nation.logo +')'}"></div>
     </ons-col>
   </ons-row>
 </div>

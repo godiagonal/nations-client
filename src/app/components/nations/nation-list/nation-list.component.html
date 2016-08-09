@@ -1,6 +1,6 @@
 <!-- todo: order by -->
 <ul class="nation-list">
   <li *ngFor="let nation of nations" (click)="clickedNation(nation)">
-    <nation-details [nation]="nation"></nation-details>
+    <nation-details [nation]="nation" [border]="true"></nation-details>
   </li>
 </ul>
