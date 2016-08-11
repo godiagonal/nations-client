@@ -1,0 +1,21 @@
+todo: fix this bug, happens when you drag the map sometimes... I think
+
+Angular 2 is running in the development mode. Call enableProdMode() to enable the production mode.
+Nations loaded.
+Nation loaded.
+EXCEPTION: TypeError: Cannot read property 'Qa' of null
+EXCEPTION: TypeError: Cannot read property 'Qa' of null
+STACKTRACE:
+TypeError: Cannot read property 'Qa' of null
+    at _.r.fl (common.js:251)
+    at Object._.I.trigger (js?v=3&callback=angular2GoogleMapsLazyMapsAPILoader&key=AIzaSyDtnt1nFvcUT7JaOn5HzNuaR5xUT4ewkBk&lan…:96)
+    at ix (common.js:198)
+    at .<anonymous> (common.js:197)
+    at Object._.I.trigger (js?v=3&callback=angular2GoogleMapsLazyMapsAPILoader&key=AIzaSyDtnt1nFvcUT7JaOn5HzNuaR5xUT4ewkBk&lan…:96)
+    at _.r.Lm (common.js:264)
+    at qv._.r.Jn (common.js:238)
+    at ZoneDelegate.invokeTask (zone.js:356)
+    at Object.onInvokeTask (ng_zone_impl.ts:61)
+    at ZoneDelegate.invokeTask (zone.js:355)
+Uncaught TypeError: Cannot read property 'Qa' of null
+Nation loaded.
