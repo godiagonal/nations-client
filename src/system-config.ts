@@ -9,18 +9,22 @@
  **********************************************************************************************/
 /** Map relative paths to URLs. */
 const map: any = {
-  'socket.io-client': 'vendor/socket.io-client/socket.io.js',
+  'socket.io-client': 'vendor/socket.io-client',
   'angular2-google-maps': 'vendor/angular2-google-maps',
   'angular2-onsenui': 'vendor/angular2-onsenui',
   'onsenui': 'vendor/onsenui',
+  'angular2-moment': 'vendor/angular2-moment',
+  'moment': 'vendor/moment',
 };
 
 /** User packages configuration. */
 const packages: any = {
-  'socket.io-client': { defaultExtension: 'js' },
+  'socket.io-client': { defaultExtension: 'js', main: 'socket.io.js' },
   'angular2-google-maps/core': { defaultExtension: 'js', main: 'index.js' },
   'angular2-onsenui': { defaultExtension: 'js', main: 'dist/src/angular2-onsenui.js' },
   'onsenui': { defaultExtension: 'js', main: 'js/onsenui.js' },
+  'angular2-moment': { defaultExtension: 'js', main: 'index.js' },
+  'moment': { defaultExtension: 'js', main: 'moment.js' },
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -48,6 +52,7 @@ const barrels: string[] = [
   'app/services',
   'app/models',
   'app/extensions',
+  'app/pipes',
   'app/components',
   'app/components/nations',
   'app/components/nations/nation-list',
@@ -62,6 +67,7 @@ const barrels: string[] = [
   'app/components/test/test-parent',
   'app/components/shared/ons-back-button-custom',
   'app/components/nations/nation-details-page',
+  'app/components/nations/nation-event',
   /** @cli-barrel */
 ];
 
