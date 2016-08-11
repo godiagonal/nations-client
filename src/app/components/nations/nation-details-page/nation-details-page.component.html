@@ -16,26 +16,38 @@
   <div *ngIf="selectedNation">
 
     <!-- todo: add photo attributions to comply with Google guidelines -->
-    <ons-carousel class="nation-photos"
+    <ons-carousel class="nation-photos {{!selectedNation.photos.length ? 'placeholder' : ''}}"
                   #photoCarousel swipeable overscrollable auto-refresh auto-scroll
                   auto-scroll-ratio="0.4" animation-options="{duration: 0.1}">
-      <ons-carousel-item class="nation-photo"
-                         *ngFor="let photo of selectedNation.photos"
-                         [ngStyle]="{'background-image': 'url(' + photo +')'}">
+      <ons-carousel-item *ngFor="let photo of selectedNation.photos"
+                         [ngStyle]="{'background-image': 'url(' + photo +')'}"
+                         class="nation-photo">
       </ons-carousel-item>
-      <ons-carousel-item class="nation-photo"
-                         *ngIf="!selectedNation.photos.length"
-                         [ngStyle]="{'background-image': 'url(' + photoPlaceholder +')'}">
+      <ons-carousel-item *ngIf="!selectedNation.photos.length"
+                         [ngStyle]="{'background-image': 'url(' + photoPlaceholder +')'}"
+                         class="nation-photo">
         <div class="nation-photo-placeholder">No photos found</div>
       </ons-carousel-item>
     </ons-carousel>
 
     <nation-details class="nation-details-container"
                     [nation]="selectedNation"
-                    [border]="false">
+                    [showBorder]="false">
     </nation-details>
 
-    <!-- todo: contact info -->
+    <div class="nation-events">
+
+      <div class="block transparent">
+        <div class="title-text" style="margin: 0px;">Upcoming events</div>
+      </div>
+
+      <ul class="nation-event-list">
+        <li *ngFor="let ev of selectedNation.events">
+          <nation-event [event]="ev" (click)="openEvent(ev)"></nation-event>
+        </li>
+      </ul>
+
+    </div>
 
   </div>
 

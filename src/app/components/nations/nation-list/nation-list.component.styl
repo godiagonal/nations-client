@@ -1,2 +1,13 @@
 .nation-list
   background-color #fff
+
+  // Hacky way to get a bottom border that doesn't cover the
+  // nation details left border
+  li::after
+    content ''
+    position absolute
+    right 0px
+    width calc(100% - 7px)
+    height 1px
+    margin-top -1px
+    background-color #ddd

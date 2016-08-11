@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs/Rx';
 
 import { Nation } from '../models';
 import { appConfig } from '../config';
+import { ArrayExtensions } from '../extensions';
 
 @Injectable()
 export class NationService {
@@ -88,6 +89,10 @@ export class NationService {
           reject(err);
         });
     });
+  }
+
+  sortNations(args) {
+    this.nations.sort(ArrayExtensions.dynamicSortMultiple(args));
   }
 
   private setNationWhenLoaded() {

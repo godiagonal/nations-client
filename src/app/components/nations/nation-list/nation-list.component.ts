@@ -28,6 +28,8 @@ export class NationListComponent implements OnInit, OnDestroy {
 
     // Subscribe to global variable nations
     this.subNations = this.nationService.nationsSub.subscribe((nations: Nation[]) => {
+      // Sort the list by status and # of current visitors
+      this.nationService.sortNations(['status', 'visitorQuota']);
       this.nations = nations;
     });
 
@@ -44,9 +46,5 @@ export class NationListComponent implements OnInit, OnDestroy {
 
   clickedNation(nation: Nation) {
     this.select.emit(nation);
-  }
-
-  checkNation() {
-    console.log(this.selectedNation);
   }
 }

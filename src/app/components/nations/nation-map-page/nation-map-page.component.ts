@@ -2,8 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { ONS_DIRECTIVES, OnsNavigator, PageParams } from 'angular2-onsenui';
 
-import { NationMapComponent, NationDetailsComponent, NationDetailsPageComponent } from '../'
-import { OnsBackButtonCustomComponent } from '../../shared'
+import { NationMapComponent, NationDetailsComponent, NationDetailsPageComponent } from '../';
+import { OnsBackButtonCustomComponent } from '../../shared';
 import { NationService } from '../../../services';
 import { Nation } from '../../../models';
 

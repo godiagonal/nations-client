@@ -1,0 +1,25 @@
+<div *ngIf="event" class="event-details block">
+  <ons-row>
+    <ons-col width="65px">
+
+      <div class="event-image"
+           [ngStyle]="{'background-image': 'linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(' + event.image +')'}">
+        <span class="event-time">
+          {{event.startTime | amDateFormat:'D'}}<br>{{event.startTime | amDateFormat:'MMM'}}
+        </span>
+      </div>
+
+    </ons-col>
+    <ons-col class="event-info">
+
+      <div class="event-name">
+        <strong>{{event.name}}</strong>
+      </div>
+
+      <div class="event-attending">
+        {{event.attending}} attending
+      </div>
+
+    </ons-col>
+  </ons-row>
+</div>

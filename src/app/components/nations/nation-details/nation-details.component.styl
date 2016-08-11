@@ -1,28 +1,34 @@
 .nation-details
-  box-sizing border-box
-  width 100%
-  padding 15px 10px 15px 18px
   transition border 0.25s linear
+  padding-right 10px
 
   &.border
     border-left 7px solid transparent
 
-  .nation-name
-    font-size 14px
-    margin-bottom 8px
-    font-weight 500
-
-  .nation-distance
   .nation-visitors
-    font-size 12px
-
-  .nation-distance
     margin-bottom 3px
 
-  .nation-image
-    position relative
-    width 100%
-    height 100%
-    background-repeat no-repeat
-    background-size contain
-    background-position center
+  .nation-event
+    margin-top 10px
+    margin-bottom 3px
+
+  .nation-image-container
+    display flex
+    align-items center
+
+    // Keeps same image size for all nations even if details div size differs
+    .nation-image
+      position relative
+      width 100%
+      height 60px
+      background-repeat no-repeat
+      background-size contain
+      background-position center
+
+.nation-contact-info
+  border-top 1px solid #ddd
+  border-bottom 1px solid #ddd
+
+  .nation-address
+  .nation-phone
+    margin-bottom 4px

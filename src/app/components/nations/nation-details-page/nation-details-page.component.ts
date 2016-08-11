@@ -1,11 +1,12 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { ONS_DIRECTIVES, OnsNavigator, PageParams } from 'angular2-onsenui';
 
 import { NationDetailsComponent } from '../';
+import { NationEventComponent } from '../nation-event'; // Have to import separately for some reason
 import { OnsBackButtonCustomComponent } from '../../shared';
 import { NationService } from '../../../services';
-import { Nation } from '../../../models';
+import { Nation, Event } from '../../../models';
 import { nationConfig } from '../../../config';
 
 @Component({
@@ -15,6 +16,7 @@ import { nationConfig } from '../../../config';
   styleUrls: ['nation-details-page.component.css'],
   directives: [
     NationDetailsComponent,
+    NationEventComponent,
     OnsBackButtonCustomComponent,
     ONS_DIRECTIVES
   ]
@@ -45,11 +47,17 @@ export class NationDetailsPageComponent implements OnInit, OnDestroy {
 
     // Subscribe to global variable selectedNation
     this.subSelectedNation = this.nationService.selectedNationSub.subscribe((nation: Nation) => {
+      // Sort events by date ascending before displaying them
+      nation.sortEvents(['startTime']);
       this.selectedNation = nation;
     });
   }
 
   ngOnDestroy() {
     this.subSelectedNation.unsubscribe();
+  }
+
+  openEvent(event: Event) {
+    window.open(event.url, '_blank');
   }
 }

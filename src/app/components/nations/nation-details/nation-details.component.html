@@ -1,23 +1,64 @@
-<div *ngIf="nation"class="nation-details {{border ? nation.statusClass : ''}}"
-     [ngClass]="{border: border}">
+<div *ngIf="nation" class="nation-details block {{nation.cssClass}} {{showBorder ? 'border': ''}}">
   <ons-row>
     <ons-col>
-      <div class="nation-name">
+
+      <div class="nation-name title-text">
         {{nation.name}}
       </div>
-      <div class="nation-distance sub-text">
-        <strong>
-          {{nation.location.distanceTo(currentLocation).distance}}
-          {{nation.location.distanceTo(currentLocation).unit}}
-        </strong>
-        from your location
+
+      <div *ngIf="showVisitors && nation.isOpenNow" class="nation-visitors">
+        <strong class="status-text">{{nation.visitorStatus}}</strong>
+        ({{nation.currentVisitors}}/{{nation.maxVisitors}} visitors)
       </div>
-      <div class="nation-visitors sub-text">
-        Currently {{nation.currentVisitors}} out of {{nation.maxVisitors}} visitors
+
+      <div *ngIf="nation.isOpenToday" class="nation-hours">
+        <div *ngIf="nation.isOpenNow">
+          Open until {{nation.todaysHours.close | amDateFormat:'HH:mm'}}
+        </div>
+        <div *ngIf="!nation.isOpenNow">
+          Open today {{nation.todaysHours.open | amDateFormat:'HH:mm'}}
+          - {{nation.todaysHours.close | amDateFormat:'HH:mm'}}
+        </div>
       </div>
+      <div *ngIf="!nation.isOpenToday" class="nation-hours">
+        <strong class="status-text">Closed today</strong>
+      </div>
+
     </ons-col>
-    <ons-col width="65px">
+    <ons-col width="65px" class="nation-image-container">
+
       <div class="nation-image" [ngStyle]="{'background-image': 'url(' + nation.logo +')'}"></div>
+
     </ons-col>
   </ons-row>
+
+  <div *ngIf="showEvent && nation.isOpenToday" class="nation-event">
+    Today: <strong>{{nation.todaysEvent}}</strong>
+  </div>
+
+  <div *ngIf="showDistance" class="nation-distance">
+    Distance:
+    <strong>
+      {{nation.location.distanceTo(currentLocation).distance}}
+      {{nation.location.distanceTo(currentLocation).unit}}
+    </strong>
+    away
+  </div>
+
+</div>
+
+<div *ngIf="nation && showContactInfo" class="nation-contact-info block">
+
+  <div class="nation-address">
+    {{nation.address}}
+  </div>
+
+  <div class="nation-phone">
+    Tel: <a href="tel:{{nation.phone}}">{{nation.phone}}</a>
+  </div>
+
+  <div class="nation-website">
+    <a href="{{nation.website}}" target="_blank">{{nation.website}}</a>
+  </div>
+
 </div>

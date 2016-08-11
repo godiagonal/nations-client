@@ -3,4 +3,5 @@ export * from './nation-details-page';
 export * from './nation-list';
 export * from './nation-map';
 export * from './nation-map-page';
+export * from './nation-event';
 export * from './nations.component';

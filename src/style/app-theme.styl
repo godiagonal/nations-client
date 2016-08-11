@@ -1,14 +1,16 @@
 $theme-color = #009eb7
-$nation-status-full-color = #f46b7b
-$nation-status-almost-full-color = #fa8e50
-$nation-status-ok-color = #00c99f
+$nation-status-open-color = #00c99f
+$nation-status-open-crowded-color = #fa8e50
+$nation-status-open-later-color = #fa8e50
+$nation-status-closed-color = #f46b7b
 
 $background-color = #f9f9f9
 $material-background-color = #ffffff
-$text-color = #3d3e40
-$sub-text-color = #707477
-$highlight-color = rgba(24,103,194,0.81)
-$second-highlight-color = #25a6d9
+$text-color = #5a5d5f
+$title-text-color = #3d3e40
+$sub-text-color = #727578
+$highlight-color = $theme-color
+$second-highlight-color = $theme-color
 $border-color = #dddddd
 $toolbar-background-color = $theme-color
 $toolbar-button-color = #fff
@@ -75,6 +77,17 @@ $fab-background-color = #009688
 
 // Global
 
+a
+  text-decoration none
+  color $highlight-color
+  font-weight 400
+
+  &:hover
+    text-decoration underline
+
+strong
+  font-weight 500
+
 ul
   margin 0px
   padding 0px
@@ -86,7 +99,7 @@ ul
   padding-left 0px
 
 .page
-  font-size 14px
+  font-size 13px
 
 .page__content.no-status-bar-fill
   top 0px !important
@@ -96,14 +109,44 @@ ul
 
 // Custom
 
-.nation-status-full
-  border-left-color $nation-status-full-color !important
+.nation-status-open
+  border-left-color $nation-status-open-color !important
 
-.nation-status-almost-full
-  border-left-color $nation-status-almost-full-color !important
+  .status-text
+    color $nation-status-open-color
 
-.nation-status-ok
-  border-left-color $nation-status-ok-color !important
+.nation-status-open-crowded
+  border-left-color $nation-status-open-crowded-color !important
+
+  .status-text
+    color $nation-status-open-crowded-color
+
+.nation-status-open-later
+  border-left-color $nation-status-open-later-color !important
+
+  .status-text
+    color $nation-status-open-later-color
+
+.nation-status-closed
+  border-left-color $nation-status-closed-color !important
+
+  .status-text
+    color $nation-status-closed-color
+
+.block
+  box-sizing border-box
+  width 100%
+  padding 15px 18px 15px 18px
+  background-color #fff
+
+  &.transparent
+    background-color transparent
+
+.title-text
+  margin-bottom 10px
+  font-size 15px
+  font-weight 500
+  color $title-text-color
 
 .sub-text
   color $sub-text-color

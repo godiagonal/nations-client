@@ -31,6 +31,9 @@ export class NationMapComponent implements OnInit, OnDestroy {
     private locationService: LocationService) { }
 
   ngOnInit() {
+    // todo: don't center map on user as soon as location is updated.
+    // add button for "center on user" that triggers map to follow current location.
+    // when user drags map manually stop centering map.
     this.currentLocation = this.locationService.currentLocation;
 
     // Subscribe to global variable nations
