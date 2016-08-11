@@ -4,5 +4,5 @@ export const googleConfig = {
     libraries: [],
     language: 'en-GB'
   },
-  userIconUrl: 'img/map-marker-user.png'
+  userIconUrl: 'img/map-circle-blue.png'
 };

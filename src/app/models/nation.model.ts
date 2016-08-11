@@ -1,6 +1,8 @@
-import { nationConfig } from '../config';
+import { nationConfig, nationStatus } from '../config';
+import { ArrayExtensions } from '../extensions';
 import { Location } from './location.model';
 import { Event } from './event.model';
+import { Hours } from './hours.model';
 
 export class Nation {
   id: number;
@@ -13,29 +15,73 @@ export class Nation {
   website: string;
   photos: string[];
   location: Location;
-  todaysOpenHours: string;
+  todaysHours: Hours;
   todaysEvent: string;
   events: Event[];
+
+  get isOpenToday() {
+    return this.todaysHours ? true : false;
+  }
+
+  get isOpenNow() {
+    if (!this.isOpenToday) {
+      return false;
+    }
+
+    let now = Date.now();
+    let open = this.todaysHours.open.getTime();
+    let close = this.todaysHours.close.getTime();
+
+    return now >= open && now <= close;
+  }
+
+  get visitorStatus() {
+    return this.statusObj ? this.statusObj.text : '';
+  }
+
+  get markerIcon() {
+    return this.statusObj ? this.statusObj.iconUrl : '';
+  }
+
+  get cssClass() {
+    return this.statusObj ? this.statusObj.cssClass : '';
+  }
 
   get visitorQuota() {
     if (this.maxVisitors === 0) { return 0; }
     return this.currentVisitors / this.maxVisitors;
   }
 
-  get markerIcon() {
-    for (let i = 0; i < nationConfig.visitorStatuses.length; i++) {
-      let visitorStatus = nationConfig.visitorStatuses[i];
-      if (this.visitorQuota >= visitorStatus.threshold) { return visitorStatus.iconUrl; }
+  get statusObj() {
+    let status = this.status;
+    for (let i = 0; i < nationConfig.statuses.length; i++) {
+      if (nationConfig.statuses[i].status === status) { return nationConfig.statuses[i]; }
     }
-    return nationConfig.visitorStatuses[nationConfig.visitorStatuses.length - 1].iconUrl;
+
+    return null;
   }
 
-  get statusClass() {
-    for (let i = 0; i < nationConfig.visitorStatuses.length; i++) {
-      let visitorStatus = nationConfig.visitorStatuses[i];
-      if (this.visitorQuota >= visitorStatus.threshold) { return visitorStatus.cssClass; }
+  get status() {
+    let s = nationStatus.closed;
+    if (this.isOpenToday) {
+      if (this.isOpenNow) {
+        if (this.visitorQuota < nationConfig.crowdedThreshold) {
+          s = nationStatus.open;
+        }
+        else {
+          s = nationStatus.openCrowded;
+        }
+      }
+      else {
+        s = nationStatus.openLater;
+      }
     }
-    return nationConfig.visitorStatuses[nationConfig.visitorStatuses.length - 1].cssClass;
+
+    return s;
+  }
+
+  sortEvents(args) {
+    this.events.sort(ArrayExtensions.dynamicSortMultiple(args));
   }
 
   constructor(
@@ -44,7 +90,7 @@ export class Nation {
     currentVisitors: number = 0,
     maxVisitors: number = 0,
     logo: string = '',
-    todaysOpenHours: string = '',
+    todaysHours: Hours = null,
     todaysEvent: string = '',
     address: string = '',
     phone: string = '',
@@ -57,7 +103,7 @@ export class Nation {
     this.currentVisitors = currentVisitors;
     this.maxVisitors = maxVisitors;
     this.logo = logo;
-    this.todaysOpenHours = todaysOpenHours;
+    this.todaysHours = todaysHours;
     this.todaysEvent = todaysEvent;
     this.address = address;
     this.phone = phone;
@@ -77,7 +123,7 @@ export class Nation {
       obj.currentVisitors,
       obj.maxVisitors,
       obj.logo,
-      obj.todaysOpenHours,
+      obj.todaysHours ? Hours.fromObject(obj.todaysHours) : null,
       obj.todaysEvent,
       obj.place ? obj.place.address : '',
       obj.place ? obj.place.phone : '',

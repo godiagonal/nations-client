@@ -1,20 +1,41 @@
+// The numbers determine the sort order when sorting
+// by nation status
+export enum nationStatus {
+  open = 1,
+  openCrowded = 2,
+  openLater = 3,
+  closed = 4
+}
+
 export const nationConfig = {
-  visitorStatuses: [
+  statuses: [
     {
-      threshold: 0.9,
-      iconUrl: 'img/map-marker-full.png',
-      cssClass: 'nation-status-full'
+      status: nationStatus.open,
+      text: 'Not crowded',
+      iconUrl: 'img/map-pin-green.png',
+      cssClass: 'nation-status-open'
     },
     {
-      threshold: 0.7,
-      iconUrl: 'img/map-marker-almost-full.png',
-      cssClass: 'nation-status-almost-full'
+      status: nationStatus.openCrowded,
+      text: 'Crowded',
+      iconUrl: 'img/map-pin-orange.png',
+      cssClass: 'nation-status-open-crowded'
     },
     {
-      threshold: 0,
-      iconUrl: 'img/map-marker-ok.png',
-      cssClass: 'nation-status-ok'
+      status: nationStatus.openLater,
+      text: '',
+      iconUrl: 'img/map-pin-orange.png',
+      cssClass: 'nation-status-open-later'
+    },
+    {
+      status: nationStatus.closed,
+      text: '',
+      iconUrl: 'img/map-pin-red.png',
+      cssClass: 'nation-status-closed'
     }
   ],
+  crowdedThreshold: 0.8,
   photoPlaceholder: 'img/photo-placeholder.png'
 };
+
+
