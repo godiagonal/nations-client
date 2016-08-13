@@ -16,8 +16,13 @@
           Open until {{nation.todaysHours.close | amDateFormat:'HH:mm'}}
         </div>
         <div *ngIf="!nation.isOpenNow">
-          Open today {{nation.todaysHours.open | amDateFormat:'HH:mm'}}
-          - {{nation.todaysHours.close | amDateFormat:'HH:mm'}}
+          <div *ngIf="nation.todaysHours.isKnown">
+            Open today {{nation.todaysHours.open | amDateFormat:'HH:mm'}}
+            - {{nation.todaysHours.close | amDateFormat:'HH:mm'}}
+          </div>
+          <div *ngIf="!nation.todaysHours.isKnown">
+            Open today (times unknown)
+          </div>
         </div>
       </div>
       <div *ngIf="!nation.isOpenToday" class="nation-hours">
