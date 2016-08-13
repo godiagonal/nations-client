@@ -24,7 +24,7 @@ export class Nation {
   }
 
   get isOpenNow() {
-    if (!this.isOpenToday) {
+    if (!this.isOpenToday || !this.todaysHours.isKnown) {
       return false;
     }
 
@@ -128,7 +128,7 @@ export class Nation {
       obj.place ? obj.place.address : '',
       obj.place ? obj.place.phone : '',
       obj.place ? obj.place.website : '',
-      obj.place ? obj.place.photos : [],
+      obj.photos ? obj.photos : [],
       obj.place ? Location.fromObject(obj.place.location) : new Location(),
       obj.events ? obj.events.map(ev => Event.fromObject(ev)) : []);
   }
