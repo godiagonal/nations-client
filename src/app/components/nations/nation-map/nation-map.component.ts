@@ -48,8 +48,12 @@ export class NationMapComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subSelectedNation.unsubscribe();
-    this.subNations.unsubscribe();
+    if (this.subSelectedNation) {
+      this.subSelectedNation.unsubscribe();
+    }
+    if (this.subNations) {
+      this.subNations.unsubscribe();
+    }
   }
 
   clickMarker(nation: Nation) {

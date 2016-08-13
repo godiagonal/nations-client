@@ -54,7 +54,9 @@ export class NationDetailsPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subSelectedNation.unsubscribe();
+    if (this.subSelectedNation) {
+      this.subSelectedNation.unsubscribe();
+    }
   }
 
   openEvent(event: Event) {

@@ -40,8 +40,12 @@ export class NationListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subSelectedNation.unsubscribe();
-    this.subNations.unsubscribe();
+    if (this.subSelectedNation) {
+      this.subSelectedNation.unsubscribe();
+    }
+    if (this.subNations) {
+      this.subNations.unsubscribe();
+    }
   }
 
   clickedNation(nation: Nation) {

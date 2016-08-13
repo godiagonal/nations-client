@@ -41,7 +41,9 @@ export class NationMapPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subSelectedNation.unsubscribe();
+    if (this.subSelectedNation) {
+      this.subSelectedNation.unsubscribe();
+    }
   }
 
   select(nation: Nation) {
