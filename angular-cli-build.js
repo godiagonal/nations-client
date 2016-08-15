@@ -24,8 +24,8 @@ module.exports = function (defaults) {
       '@angular/**/*.+(js|js.map)',
       'socket.io-client/socket.io.js',
       'angular2-google-maps/**/*.+(js|js.map)',
-      'angular2-onsenui/dist/**/*',
-      'onsenui/**',
+      'angular2-onsenui/dist/**/*.+(js|js.map)',
+      'onsenui/**/*.+(js|js.map|css|eot|svg|ttf|woff|woff2|otf)',
       'angular2-moment/**/*.+(js|js.map)',
       'moment/**/*.+(js|js.map)',
     ]

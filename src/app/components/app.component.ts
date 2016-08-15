@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ROUTER_DIRECTIVES, Router } from '@angular/router';
+import * as ons from 'onsenui';
 
-window['ons'] = System.import('onsenui');
+window['ons'] = ons;
 
 import { NationsComponent } from './nations';
 

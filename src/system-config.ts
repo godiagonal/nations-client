@@ -22,7 +22,7 @@ const packages: any = {
   'socket.io-client': { defaultExtension: 'js', main: 'socket.io.js' },
   'angular2-google-maps/core': { defaultExtension: 'js', main: 'index.js' },
   'angular2-onsenui': { defaultExtension: 'js', main: 'dist/src/angular2-onsenui.js' },
-  'onsenui': { defaultExtension: 'js', main: 'js/onsenui.js' },
+  'onsenui': { defaultExtension: 'js', main: 'js/onsenui.js', format: 'cjs' },
   'angular2-moment': { defaultExtension: 'js', main: 'index.js' },
   'moment': { defaultExtension: 'js', main: 'moment.js' },
 };
