@@ -6,6 +6,7 @@
   },
   "globalDependencies": {
     "es6-shim": "registry:dt/es6-shim#0.31.2+20160602141504",
+    "onsenui": "registry:dt/onsenui#0.0.0+20160316155526",
     "socket.io-client": "registry:dt/socket.io-client#1.4.4+20160317120654"
   }
 }

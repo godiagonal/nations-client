@@ -1,8 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ROUTER_DIRECTIVES, Router } from '@angular/router';
-import * as ons from 'onsenui';
+//import * as ons from 'onsenui';
 
-window['ons'] = ons;
+// the above stopped working for some reason?
+window['ons'] = System.import('onsenui');
 
 import { NationsComponent } from './nations';
 
